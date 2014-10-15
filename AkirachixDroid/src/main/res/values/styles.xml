@@ -5,4 +5,45 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Text">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!-- text large -->
+    <style name="TextLarge" parent="@style/Text">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <!-- text medium -->
+    <style name="TextMedium" parent="@style/Text">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextMediumTwo" parent="@style/Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextMediumThree" parent="@style/Text">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!-- text medium with icon -->
+    <style name="TextMedium.WithIcon">
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="TextMediumThree.WithIcon">
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- text micro -->
+    <style name="TextMicro" parent="@style/Text">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- text small -->
+    <style name="TextSmall" parent="@style/Text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
