@@ -28,6 +28,10 @@
             android:name=".HomeScreen"
             android:label="@string/title_activity_home_screen" >
         </activity>
+        <activity
+            android:name=".WelcomeScreen"
+            android:label="@string/title_activity_weclome_screen" >
+        </activity>
     </application>
 
 </manifest>
