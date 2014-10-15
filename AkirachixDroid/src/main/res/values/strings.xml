@@ -8,4 +8,28 @@
     <string name="title_activity_login_screen">LoginScreen</string>
     <string name="title_activity_home_screen">HomeScreen</string>
 
+    <!-- TextView Values -->
+    <string name="strFullNames">Full Names: </string>
+    <string name="strUserName">User Name:</string>
+    <string name="strPassword">Password:</string>
+    <string name="strEmail">Email:</string>
+    <string name="strCreateAcc">Create Account</string>
+    <string name="strTitleLogin">Login</string>
+
+    <!-- EditText Hint Values -->
+    <string name="strHintFullNames">Code Wizard </string>
+    <string name="strHintUserName">codeWizard</string>
+    <string name="strHintPassword">***********</string>
+    <string name="strHintEmail">codewizard@gmail.com</string>
+
+    <!-- Button Text-->
+    <string name="btnTextRegister">Register</string>
+    <string name="btnTextLogin">Login</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnLogin">Login</string>
+
+    <!-- CheckBox Text -->
+    <string name="cbShowPassword">Show Password:</string>
+
+
 </resources>
