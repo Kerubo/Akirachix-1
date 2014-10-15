@@ -7,6 +7,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_login_screen">LoginScreen</string>
     <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_welcome_screen">WelcomeScreen</string>
 
     <!-- TextView Values -->
     <string name="strFullNames">Full Names: </string>
@@ -22,7 +23,7 @@
     <string name="strHintPassword">***********</string>
     <string name="strHintEmail">codewizard@gmail.com</string>
 
-    <!-- Button Text-->
+    <!-- Button Text -->
     <string name="btnTextRegister">Register</string>
     <string name="btnTextLogin">Login</string>
     <string name="btnCancel">Cancel</string>
