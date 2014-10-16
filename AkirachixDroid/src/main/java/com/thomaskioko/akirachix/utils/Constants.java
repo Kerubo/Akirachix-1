@@ -15,13 +15,13 @@
 package com.thomaskioko.akirachix.utils;
 
 /**
- * This class contains variables used multiple times across the application.
+ * This class contains static variables used multiple times across the application.
  * @author kioko
  */
 public class Constants {
 
     public static final int DELAY_TIME = 2500;
-    
+
     //Shared Preferences Keys
     public static final String PREFS_NAME = "myPrefs";
     public static final String KEY_FULL_NAME = "fullName";
