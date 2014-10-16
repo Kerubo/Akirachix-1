@@ -16,12 +16,18 @@ package com.thomaskioko.akirachix;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.thomaskioko.akirachix.utils.Constants;
 import com.thomaskioko.akirachix.utils.SessionManager;
@@ -35,7 +41,7 @@ import com.thomaskioko.akirachix.utils.SessionManager;
 
 public class RegisterActivity extends ActionBarActivity implements View.OnClickListener {
 
-    EditText etUserName, etEmail, etFullName, etPassword;
+    EditText etUserName, etEmail, etFullName, etPassword, etConfirmPassword;
 
     Constants myConstants;
     SessionManager sessionManager;
@@ -55,9 +61,27 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         etEmail = (EditText) findViewById(R.id.etEmail);
         etFullName = (EditText) findViewById(R.id.etFullNames);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        etConfirmPassword = (EditText) findViewById(R.id.etConfirmPassword);
 
         Button register = (Button) findViewById(R.id.btnRegister);
         register.setOnClickListener(this);
+        Button back = (Button) findViewById(R.id.btnBack);
+        back.setOnClickListener(this);
+
+        //This checkbox displays the users password
+        CheckBox passwordCheckBox = (CheckBox) findViewById(R.id.checkBoxRegister);
+        passwordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(!isChecked){
+                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }else{
+                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    etConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
     }
 
 
@@ -81,19 +105,52 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnRegister:
-                //Store user data in the session manager.
-                sessionManager.createUser(
-                        etFullName.getText().toString(),
-                        etUserName.getText().toString(),
-                        etEmail.getText().toString(),
-                        etPassword.getText().toString()
-                );
+                /**
+                 * Here we do some data Validation. You can do it better than this. I am just showing
+                 * you the basic flow.
+                 */
 
-                startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+                //Check if the data is null
+                if (etFullName.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()
+                        || etEmail.getText().toString().isEmpty() || etUserName.getText().toString().isEmpty()
+                        ) {
+                    displayToastMessage("You cannot have blank fields!!");
+                } else if (etFullName.getText().toString().isEmpty()) {
+                    displayToastMessage("Please Enter Full Names!!");
+                } else if (etPassword.getText().toString().isEmpty()) {
+                    displayToastMessage("Please Enter A Password!!");
+                } else if (etEmail.getText().toString().isEmpty()) {
+                    displayToastMessage("Please Enter Email Address!!");
+                }else  if (etUserName.getText().toString().isEmpty()) {
+                    displayToastMessage("Enter your User Name!!");
+                }else if (!etPassword.getText().toString().equals(etConfirmPassword.getText().toString())){
+                    displayToastMessage("Passwords Do not Match!!!");
+                }
+                else{
+                    //Store user data in the session manager.
+//                    sessionManager.createUser(
+//                            etFullName.getText().toString(),
+//                            etUserName.getText().toString(),
+//                            etEmail.getText().toString(),
+//                            etPassword.getText().toString()
+//                    );
+//                    startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+                    displayToastMessage("We Are Good to go!!!");
+                }
+                break;
+            case R.id.btnBack:
+                startActivity(new Intent(getApplicationContext(), WelcomeScreen.class));
                 break;
             default:
                 Log.i(TAG, "@onClick: Wizard says NO!!!");
                 break;
         }
+    }
+
+    /**
+     * @param message Message to be displayed
+     */
+    public void displayToastMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
