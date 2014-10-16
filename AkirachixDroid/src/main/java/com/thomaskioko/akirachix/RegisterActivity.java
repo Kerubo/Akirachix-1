@@ -13,22 +13,51 @@
  */
 package com.thomaskioko.akirachix;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.thomaskioko.akirachix.utils.Constants;
+import com.thomaskioko.akirachix.utils.SessionManager;
 
 /**
+ * This Activity allows the user to create a new account. It then stores the data in shared preferences.
+ * This will be updated, allowing the app to store the data in SQLite and later into an online server.
  *
  * @author kioko
  */
 
-public class RegisterActivity extends ActionBarActivity {
+public class RegisterActivity extends ActionBarActivity implements View.OnClickListener {
+
+    EditText etUserName, etEmail, etFullName, etPassword;
+
+    Constants myConstants;
+    SessionManager sessionManager;
+
+    private static final String TAG = RegisterActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        myConstants = new Constants();
+        sessionManager = new SessionManager(getApplicationContext());
+
+        etUserName = (EditText) findViewById(R.id.etUserName);
+        etEmail = (EditText) findViewById(R.id.etEmail);
+        etFullName = (EditText) findViewById(R.id.etFullNames);
+        etPassword = (EditText) findViewById(R.id.etPassword);
+
+        Button register = (Button) findViewById(R.id.btnRegister);
+        register.setOnClickListener(this);
     }
 
 
@@ -46,5 +75,25 @@ public class RegisterActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnRegister:
+                //Store user data in the session manager.
+                sessionManager.createUser(
+                        etFullName.getText().toString(),
+                        etUserName.getText().toString(),
+                        etEmail.getText().toString(),
+                        etPassword.getText().toString()
+                );
+
+                startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+                break;
+            default:
+                Log.i(TAG, "@onClick: Wizard says NO!!!");
+                break;
+        }
     }
 }
