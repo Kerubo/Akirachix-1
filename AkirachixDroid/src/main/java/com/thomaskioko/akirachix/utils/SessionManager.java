@@ -40,7 +40,7 @@ public class SessionManager {
         this._context = context;
         sharedPreferences = _context.getSharedPreferences(Constants.PREFS_NAME, 0);
         editor = sharedPreferences.edit();
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -58,7 +58,7 @@ public class SessionManager {
         editor.putString(Constants.KEY_USER_NAME, userName);
         editor.putString(Constants.KEY_EMAIL, email);
         editor.putString(Constants.KEY_PASSWORD, password);
-        editor.putBoolean(Constants.KEY_STATE, true);
+        editor.putBoolean(Constants.KEY_STATE, false);
 
         editor.commit();
     }
@@ -71,7 +71,7 @@ public class SessionManager {
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<String, String>();
 
-        user.put(Constants.KEY_HM_NAME, sharedPreferences.getString(Constants.KEY_USER_NAME, null));
+        user.put(Constants.KEY_HM_USER_NAME, sharedPreferences.getString(Constants.KEY_USER_NAME, null));
         user.put(Constants.KEY_HM_PASSWORD, sharedPreferences.getString(Constants.KEY_PASSWORD, null));
 
         return user;
@@ -95,6 +95,16 @@ public class SessionManager {
      */
     public boolean isLoggedIn() {
         return sharedPreferences.getBoolean(Constants.KEY_STATE, false);
+    }
+
+    /**
+     * This method is used to set the state when the user logs in.
+     *
+     * @param loginState Boolean value
+     */
+    public void setLoginState(boolean loginState){
+        editor.putBoolean(Constants.KEY_STATE, loginState);
+        editor.apply();
     }
 
 }
