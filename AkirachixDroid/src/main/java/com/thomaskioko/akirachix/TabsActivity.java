@@ -14,11 +14,11 @@
 
 package com.thomaskioko.akirachix;
 
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,22 +27,22 @@ import android.view.MenuItem;
  * @author kioko
  */
 
-public class TabsActivity extends FragmentActivity implements
+public class TabsActivity extends ActionBarActivity implements
         ActionBar.TabListener {
 
     private ViewPager viewPager;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Top Rated", "Games", "Movies" };
+    private String[] tabs = { "Test", "Java", "Android" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
 
-        // Initilization
+        // Initialisation
         viewPager = (ViewPager) findViewById(R.id.pager);
-        //actionBar = getActionBar();
+        actionBar = getSupportActionBar();
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(mAdapter);
