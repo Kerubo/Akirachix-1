@@ -13,22 +13,46 @@
  */
 package com.thomaskioko.akirachix;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
+ * This is the main screen of the Application. It
  *
  * @author kioko
  */
 
-public class HomeScreen extends ActionBarActivity {
+public class HomeScreen extends ActionBarActivity implements AdapterView.OnItemClickListener {
+
+    String[] listContent = {"Tabs Activity", "WebView"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+
+        // Initialization
+        ListView listview = (ListView) findViewById(R.id.mainList);
+
+        //Convert the Array to ArrayList
+        ArrayList<String> contentList = new ArrayList<String>();
+        contentList.addAll(Arrays.asList(listContent));
+
+        // Design the ListView
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, R.layout.simple_layout, contentList);
+        listview.setAdapter(stringArrayAdapter);
+        listview.setOnItemClickListener(this);
     }
 
 
@@ -46,5 +70,23 @@ public class HomeScreen extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        switch (position) {
+
+            case 0:
+                startActivity(new Intent(getApplicationContext(), TabsActivity.class));
+                break;
+            case 1:
+                //This opens the WebViewActivity
+                startActivity(new Intent(getApplicationContext(), WebViewActivity.class));
+                break;
+
+            default:
+                break;
+
+        }
     }
 }
