@@ -14,9 +14,8 @@
 package com.thomaskioko.akirachix;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.InputType;
+import android.support.v7.app.ActionBarActivity;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -128,14 +127,13 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
                 }
                 else{
                     //Store user data in the session manager.
-//                    sessionManager.createUser(
-//                            etFullName.getText().toString(),
-//                            etUserName.getText().toString(),
-//                            etEmail.getText().toString(),
-//                            etPassword.getText().toString()
-//                    );
-//                    startActivity(new Intent(getApplicationContext(), LoginScreen.class));
-                    displayToastMessage("We Are Good to go!!!");
+                    sessionManager.createUser(
+                            etFullName.getText().toString(),
+                            etUserName.getText().toString(),
+                            etEmail.getText().toString(),
+                            etPassword.getText().toString()
+                    );
+                    startActivity(new Intent(getApplicationContext(), LoginScreen.class));
                 }
                 break;
             case R.id.btnBack:
