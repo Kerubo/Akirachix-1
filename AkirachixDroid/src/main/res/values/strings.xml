@@ -8,6 +8,7 @@
     <string name="title_activity_login_screen">LoginScreen</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_welcome_screen">WelcomeScreen</string>
+    <string name="title_activity_tabs">TabsActivity</string>
 
     <!-- TextView Values -->
     <string name="strFullNames">Full Names: </string>
@@ -16,18 +17,23 @@
     <string name="strEmail">Email:</string>
     <string name="strCreateAcc">Create Account</string>
     <string name="strTitleLogin">Login</string>
+    <string name="strAndroid">I Love Android.</string>
+    <string name="strJava">I Love Java</string>
+    <string name="strTabText">Another Tab Fragment</string>
 
     <!-- EditText Hint Values -->
     <string name="strHintFullNames">Code Wizard </string>
     <string name="strHintUserName">codeWizard</string>
     <string name="strHintPassword">***********</string>
     <string name="strHintEmail">codewizard@gmail.com</string>
+    <string name="strHintEnterUrl">Enter Url</string>
 
     <!-- Button Text -->
     <string name="btnTextRegister">Register</string>
     <string name="btnTextLogin">Login</string>
     <string name="btnCancel">Cancel</string>
     <string name="btnLogin">Login</string>
+    <string name="btnBrowser">Open Link</string>
 
     <!-- CheckBox Text -->
     <string name="cbShowPassword">Show Password:</string>
