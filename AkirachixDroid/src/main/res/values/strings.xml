@@ -14,6 +14,7 @@
     <string name="strFullNames">Full Names: </string>
     <string name="strUserName">User Name:</string>
     <string name="strPassword">Password:</string>
+    <string name="strConfirmPassword">Confirm Password:</string>
     <string name="strEmail">Email:</string>
     <string name="strCreateAcc">Create Account</string>
     <string name="strTitleLogin">Login</string>
@@ -30,7 +31,7 @@
 
     <!-- Button Text -->
     <string name="btnTextRegister">Register</string>
-    <string name="btnTextLogin">Login</string>
+    <string name="btnTextLogin">Back</string>
     <string name="btnCancel">Cancel</string>
     <string name="btnLogin">Login</string>
     <string name="btnBrowser">Open Link</string>
