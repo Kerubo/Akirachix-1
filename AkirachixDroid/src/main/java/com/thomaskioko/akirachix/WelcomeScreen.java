@@ -38,7 +38,7 @@ public class WelcomeScreen extends ActionBarActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weclome_screen);
 
-        Button btnRegister = (Button) findViewById(R.id.btnWelcomeRegister);
+        Button btnRegister = (Button) findViewById(R.id.btnLoginCancel);
         btnRegister.setOnClickListener(this);
         Button btnLogin = (Button) findViewById(R.id.btnWelcomeLogin);
         btnLogin.setOnClickListener(this);
@@ -65,7 +65,7 @@ public class WelcomeScreen extends ActionBarActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnWelcomeRegister:
+            case R.id.btnLoginCancel:
                 startActivity(new Intent(WelcomeScreen.this, RegisterActivity.class));
                 break;
             case R.id.btnWelcomeLogin:
