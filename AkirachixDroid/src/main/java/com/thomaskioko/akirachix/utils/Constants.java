@@ -32,5 +32,6 @@ public class Constants {
 
     //HashMap Keys
     public static final String KEY_HM_NAME = "fullName";
+    public static final String KEY_HM_USER_NAME = "userName";
     public static final String KEY_HM_PASSWORD = "password";
 }
