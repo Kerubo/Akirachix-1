@@ -72,10 +72,10 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         passwordCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(!isChecked){
+                if (!isChecked) {
                     etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }else{
+                } else {
                     etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     etConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
@@ -120,12 +120,21 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
                     displayToastMessage("Please Enter A Password!!");
                 } else if (etEmail.getText().toString().isEmpty()) {
                     displayToastMessage("Please Enter Email Address!!");
-                }else  if (etUserName.getText().toString().isEmpty()) {
+                } else if (etUserName.getText().toString().isEmpty()) {
                     displayToastMessage("Enter your User Name!!");
-                }else if (!etPassword.getText().toString().equals(etConfirmPassword.getText().toString())){
+                } else if (!etPassword.getText().toString().equals(etConfirmPassword.getText().toString())) {
                     displayToastMessage("Passwords Do not Match!!!");
-                }
-                else{
+                } else {
+                    /**
+                     * We log what is happening. You will delete this before you publish your app.
+                     * This is just for debugging purposes. :-)
+                     */
+
+                    Log.i(TAG, "@onClick: Storing user details.");
+                    Log.i(TAG, "@onClick: FullName: " + etFullName.getText().toString() + "\n"
+                            + "UserName: " + etUserName.getText().toString() + "\n"
+                            + "Email: " + etEmail.getText().toString() + "\n"
+                            + "Password: " + etPassword.getText().toString());
                     //Store user data in the session manager.
                     sessionManager.createUser(
                             etFullName.getText().toString(),
