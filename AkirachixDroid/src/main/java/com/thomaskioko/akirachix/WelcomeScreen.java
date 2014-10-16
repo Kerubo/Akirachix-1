@@ -49,7 +49,7 @@ public class WelcomeScreen extends ActionBarActivity implements View.OnClickList
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.weclome_screen, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
