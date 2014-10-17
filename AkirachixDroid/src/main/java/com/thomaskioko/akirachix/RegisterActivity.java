@@ -28,6 +28,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.thomaskioko.akirachix.model.User;
 import com.thomaskioko.akirachix.utils.Constants;
 import com.thomaskioko.akirachix.utils.SessionManager;
 
@@ -108,21 +109,17 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
                  * Here we do some data Validation. You can do it better than this. I am just showing
                  * you the basic flow.
                  */
+                User userModel = new User();
+                userModel.setFullName(etFullName.getText().toString());
+                userModel.setEmail(etEmail.getText().toString());
+                userModel.setPassword(etPassword.getText().toString());
+                userModel.setUserName(etUserName.getText().toString());
 
                 //Check if the data is null
-                if (etFullName.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()
-                        || etEmail.getText().toString().isEmpty() || etUserName.getText().toString().isEmpty()
-                        ) {
+                if (userModel.getFullName().isEmpty() || userModel.getPassword().isEmpty()
+                        || userModel.getEmail().isEmpty() || userModel.getUserName().isEmpty()){
                     displayToastMessage("You cannot have blank fields!!");
-                } else if (etFullName.getText().toString().isEmpty()) {
-                    displayToastMessage("Please Enter Full Names!!");
-                } else if (etPassword.getText().toString().isEmpty()) {
-                    displayToastMessage("Please Enter A Password!!");
-                } else if (etEmail.getText().toString().isEmpty()) {
-                    displayToastMessage("Please Enter Email Address!!");
-                } else if (etUserName.getText().toString().isEmpty()) {
-                    displayToastMessage("Enter your User Name!!");
-                } else if (!etPassword.getText().toString().equals(etConfirmPassword.getText().toString())) {
+                } else if (!userModel.getPassword().equals(etConfirmPassword.getText().toString())) {
                     displayToastMessage("Passwords Do not Match!!!");
                 } else {
                     /**
@@ -137,10 +134,10 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
                             + "Password: " + etPassword.getText().toString());
                     //Store user data in the session manager.
                     sessionManager.createUser(
-                            etFullName.getText().toString(),
-                            etUserName.getText().toString(),
-                            etEmail.getText().toString(),
-                            etPassword.getText().toString()
+                            userModel.getFullName(),
+                            userModel.getUserName(),
+                            userModel.getEmail(),
+                            userModel.getPassword()
                     );
                     startActivity(new Intent(getApplicationContext(), LoginScreen.class));
                 }
