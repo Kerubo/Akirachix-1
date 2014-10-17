@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * This is the main screen of the Application. It
+ * This is the main screen of the Application.
  *
  * @author kioko
  */
@@ -49,8 +49,12 @@ public class HomeScreen extends ActionBarActivity implements AdapterView.OnItemC
         ArrayList<String> contentList = new ArrayList<String>();
         contentList.addAll(Arrays.asList(listContent));
 
-        // Design the ListView
-        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, R.layout.simple_layout, contentList);
+        /**
+         * Design the ListView. We use android in built listView.
+         * To use a custom list replace android.R.layout.simple_list_item_1 with R.layout."Layout_Name"
+         */
+
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contentList);
         listview.setAdapter(stringArrayAdapter);
         listview.setOnItemClickListener(this);
     }
